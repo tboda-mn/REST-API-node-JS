@@ -4,12 +4,13 @@ const express=require('express');//returns a function
 const app = express();//provides methods like get,post,put,delete i.e. http verbs
 app.use(express.json());//to use middleware in request processing
 
-const courses=[{id:1,name:'course1'},
+process.stdout.write("Hey \n");//print
+const courses=[{id:1,name:'courjse1'},
                 {id:2,name:'course2'},
                 {id:3,name:'course3'}
 ];
 app.get('/',(req,res) => {//first argument is url/path,2nd argument is callback fn or route handler,these are API's
-    res.send('Hello Worldd');//res stands for resource
+    res.send('Hello World');//res stands for resource
 
 });
 
@@ -51,8 +52,8 @@ app.post('/api/courses',(req,res) => {//to add courses
 })
 
 app.put('/api/courses/:id',(req,res) => {
-    //look up the course with given id
-    //if not existing,return 404
+    // look up the course with given id
+    // if not existing,return 404
     const course = courses.find(c => c.id === parseInt(req.params.id));//For example, if you have a route as /api/:name, then the "name" property is available as req.params.name.
     if(!course){//if we dont find a coure of given id,return 404
             res.status(404).send('The course with given ID was not found')
